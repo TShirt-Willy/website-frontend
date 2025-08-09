@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TShirt‑Willy — Im Aufbau</title>
+  <meta name="description" content="TShirt‑Willy: T‑Shirt Onlinehandel. Diese Single‑Page ist ein schneller Platzhalter — wir befinden uns im Aufbau." />
+  <meta name="theme-color" content="#111827" />
+  <meta property="og:title" content="TShirt‑Willy — Im Aufbau" />
+  <meta property="og:description" content="Unser Shop wird gerade gebaut. Bald mehr!" />
+  <meta property="og:image" content="https://cdn-proxy.hoststudios.de/willy_logo.png" />
+  <link rel="icon" href="https://cdn-proxy.hoststudios.de/willy_logo.png" />
+  <style>
+    :root {
+      --bg: #0b0f1a;
+      --card: #121826;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --brand: #22d3ee; /* cyan-400 */
+      --accent: #a78bfa; /* violet-400 */
+      --ring: rgba(34, 211, 238, 0.35);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 70% -10%, rgba(167,139,250,.15), transparent),
+                  radial-gradient(900px 500px at -10% 110%, rgba(34,211,238,.12), transparent),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; padding: 1.25rem 1rem; max-width: 1100px; margin: 0 auto;
+    }
+    .brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; color: var(--text); }
+    .brand img { width: 42px; height: 42px; object-fit: contain; filter: drop-shadow(0 2px 6px rgba(0,0,0,.35)); }
+    .brand span { font-weight: 700; letter-spacing: .2px; }
+    nav a { color: var(--muted); text-decoration: none; margin-left: 1rem; font-weight: 600; }
+    nav a.active { color: var(--text); }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem 4rem; }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      backdrop-filter: blur(6px);
+    }
+
+    .hero {
+      display: grid; gap: 1.25rem; padding: 2rem; text-align: center; place-items: center;
+    }
+    .hero h1 {
+      margin: 0; font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.15;
+      background: linear-gradient(90deg, var(--brand), var(--accent));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero p { margin: 0; color: var(--muted); max-width: 65ch; }
+    .hero .actions { display: flex; gap: .75rem; flex-wrap: wrap; justify-content: center; margin-top: .75rem; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1rem;
+      border-radius: 12px; border: 1px solid rgba(255,255,255,.1);
+      color: var(--text); text-decoration: none; font-weight: 700; letter-spacing: .2px;
+      background: rgba(255,255,255,.03);
+      transition: transform .08s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .btn:hover { transform: translateY(-1px); border-color: rgba(255,255,255,.22); box-shadow: 0 8px 18px rgba(0,0,0,.4); }
+
+    .input {
+      appearance: none; border: 1px solid rgba(255,255,255,.12); background: rgba(0,0,0,.25);
+      color: var(--text); padding: .75rem .9rem; border-radius: 12px; min-width: 260px;
+      outline: none; box-shadow: 0 0 0 0 var(--ring);
+    }
+    .input:focus { border-color: var(--brand); box-shadow: 0 0 0 6px var(--ring); }
+
+    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: 1.25rem; }
+    .tile { padding: 1rem; }
+    .tile h3 { margin: .2rem 0 .4rem; font-size: 1.1rem; }
+    .muted { color: var(--muted); }
+
+    footer { color: var(--muted); font-size: .9rem; text-align: center; padding: 2rem 1rem; }
+    .badge { font-size: .8rem; padding: .35rem .6rem; border-radius: 999px; background: rgba(167,139,250,.15); border: 1px solid rgba(167,139,250,.35); }
+
+    /* Small hash-router transitions */
+    .fade-enter { opacity: 0; transform: translateY(6px); }
+    .fade-enter-active { opacity: 1; transform: translateY(0); transition: opacity .25s ease, transform .25s ease; }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="#/" aria-label="TShirt‑Willy Startseite">
+      <img src="https://cdn-proxy.hoststudios.de/willy_logo.png" alt="TShirt‑Willy Logo" />
+      <span>TShirt‑Willy</span>
+    </a>
+    <nav aria-label="Hauptnavigation">
+      <a href="#/" id="nav-home" class="active">Start</a>
+      <a href="#/about" id="nav-about">Über uns</a>
+      <a href="#/kontakt" id="nav-kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="view" class="card hero">
+      <!-- SPA content wird hier gerendert -->
+    </section>
+
+    <section class="grid" aria-label="Highlights">
+      <article class="card tile">
+        <h3>Qualität zuerst</h3>
+        <p class="muted">Wir kuratieren Stoffe und Druckverfahren, die langlebig sind — ohne Kompromisse.</p>
+      </article>
+      <article class="card tile">
+        <h3>Faire Preise</h3>
+        <p class="muted">Transparente Kalkulation und regelmäßige Aktionen zum Launch.</p>
+      </article>
+      <article class="card tile">
+        <h3>Superschneller Versand</h3>
+        <p class="muted">Europaweit, klimaneutral — direkt aus unserem neuen Logistik‑Setup.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <span class="badge">Status: im Aufbau</span>
+    <div style="margin-top:.6rem">© <span id="year"></span> TShirt‑Willy. Alle Rechte vorbehalten.</div>
+  </footer>
+
+  <script>
+    // Mini Hash Router (Start, About, Kontakt)
+    const routes = {
+      '/': () => `
+        <img src="https://cdn-proxy.hoststudios.de/willy_logo.png" alt="TShirt‑Willy Logo" width="120" height="120" style="border-radius:16px;"/>
+        <h1>Wir befinden uns im Aufbau</h1>
+        <p>Bald startet hier der TShirt‑Willy Onlineshop. Trag dich ein und erfahre als Erste*r vom Launch.</p>
+        <div class="actions">
+          <form id="notifyForm" onsubmit="return false" aria-label="Benachrichtigung">
+            <input class="input" type="email" name="email" placeholder="deine@email.de" required aria-label="E‑Mail Adresse"/>
+            <button class="btn" type="submit">Benachrichtigung erhalten</button>
+          </form>
+          <a class="btn" href="mailto:hallo@tshirt-willy.example" aria-label="E‑Mail an TShirt‑Willy senden">Kontakt aufnehmen</a>
+        </div>
+      `,
+      '/about': () => `
+        <img src="https://cdn-proxy.hoststudios.de/willy_logo.png" alt="TShirt‑Willy Logo" width="100" height="100" style="border-radius:14px;"/>
+        <h1>Über TShirt‑Willy</h1>
+        <p>Wir sind ein kleines Team mit einer großen Mission: großartige Shirts, verantwortungsvoll produziert, zu Preisen, die Spaß machen.</p>
+        <div class="actions">
+          <a class="btn" href="#/kontakt">Fragen? Schreib uns!</a>
+        </div>
+      `,
+      '/kontakt': () => `
+        <h1>Kontakt</h1>
+        <p class="muted">Wir freuen uns über deine Nachricht.</p>
+        <div class="actions">
+          <a class="btn" href="mailto:hallo@tshirt-willy.example">E‑Mail</a>
+          <a class="btn" href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+          <a class="btn" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      `,
+    };
+
+    function render(path) {
+      const view = document.getElementById('view');
+      view.innerHTML = routes[path] ? routes[path]() : routes['/']();
+      view.classList.add('fade-enter');
+      requestAnimationFrame(() => view.classList.add('fade-enter-active'));
+      setTimeout(() => view.classList.remove('fade-enter', 'fade-enter-active'), 260);
+      setActiveNav(path);
+    }
+
+    function setActiveNav(path) {
+      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+      const map = { '/': '#nav-home', '/about': '#nav-about', '/kontakt': '#nav-kontakt' };
+      const sel = map[path] || map['/'];
+      const el = document.querySelector(sel);
+      if (el) el.classList.add('active');
+    }
+
+    function getPath() {
+      const h = location.hash.replace(/^#/, '');
+      return h === '' ? '/' : h;
+    }
+
+    window.addEventListener('hashchange', () => render(getPath()));
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('year').textContent = new Date().getFullYear();
+      render(getPath());
+      // Dummy handler for the mini form
+      document.addEventListener('submit', (e) => {
+        if (e.target && e.target.id === 'notifyForm') {
+          const email = e.target.email.value;
+          alert(`Danke! Wir informieren dich unter: ${email}`);
+          e.target.reset();
+        }
+      });
+    });
+  </script>
+
+  <!--
+  Bereitstellung auf GitHub Pages
+  1) Neues Repo anlegen, z.B. tshirt-willy.github.io oder tshirt-willy-site
+  2) Diese Datei als index.html in den main-Branch committen
+  3) In den Repo‑Settings → Pages → Source: Deploy from a branch → main /(root)
+  4) Da wir Hash‑Routing nutzen (#/…), ist keine zusätzliche 404.html nötig.
+
+  Logo anpassen
+  - Wenn du das Logo lokal ablegen willst, ersetze die Logo‑URLs oben durch ./assets/logo.png
+  - Achte darauf, die Datei im Repo mitzucommitten.
+  -->
+</body>
+</html>
