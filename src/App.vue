@@ -6,14 +6,14 @@
     </RouterLink>
 
     <nav aria-label="Hauptnavigation">
-      <RouterLink to="/" v-slot="{ isActive }">
-        <span :class="{ active: isActive }">Start</span>
+      <RouterLink to="/" v-slot="{ isExactActive }">
+        <span :class="{ active: isExactActive }">Start</span>
       </RouterLink>
-      <RouterLink to="/about" v-slot="{ isActive }">
-        <span :class="{ active: isActive }">Über uns</span>
+      <RouterLink to="/about" v-slot="{ isExactActive }">
+        <span :class="{ active: isExactActive }">Über uns</span>
       </RouterLink>
-      <RouterLink to="/kontakt" v-slot="{ isActive }">
-        <span :class="{ active: isActive }">Kontakt</span>
+      <RouterLink to="/kontakt" v-slot="{ isExactActive }">
+        <span :class="{ active: isExactActive }">Kontakt</span>
       </RouterLink>
     </nav>
   </header>
@@ -34,7 +34,7 @@
         <strong>TShirt-Willy</strong>
         <div class="muted">Mit ❤️ gestaltet in Deutschland.</div>
       </div>
-      <nav>
+      <nav aria-label="Footernavigation">
         <RouterLink to="/about">Über uns</RouterLink> ·
         <RouterLink to="/kontakt">Kontakt</RouterLink> ·
         <a href="#" aria-disabled="true">Impressum</a> ·
@@ -47,5 +47,6 @@
 
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+
 const year = new Date().getFullYear()
 </script>
