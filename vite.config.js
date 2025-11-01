@@ -1,7 +1,9 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+ import { defineConfig } from 'vite'
+ import vue from '@vitejs/plugin-vue'
 
-export default defineConfig({
-  plugins: [vue()],
-  base: '/',
-})
+const repoName = 'tshirt-willy' // <-- ggf. ändern oder via env steuern
+
+ export default defineConfig({
+   plugins: [vue()],
+   base: process.env.GITHUB_PAGES ? `/${repoName}/` : '/',
+ })

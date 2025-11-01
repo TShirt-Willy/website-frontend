@@ -21,19 +21,19 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 24.11.0
+          node-version: 22.12.0
           cache: 'npm'
 
-      - run: npm i
+      - run: npm ci
       - run: npm run build
 
-      # CNAME in den Build legen (keine CNAME im Repo-Root lassen!)
+      # CNAME in den Build schreiben (nicht im Repo-Root halten!)
       - name: Add CNAME
         run: echo "tshirt-willy.de" > dist/CNAME
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist            # <<— nur das fertige build ausliefern
+          path: dist
 
   deploy:
     needs: build
