@@ -18,21 +18,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: 22.12.0
           cache: 'npm'
-
       - run: npm ci
       - run: npm run build
-        env:
-          GITHUB_PAGES: true
-
-      # CNAME für Custom Domain
       - name: Add CNAME
         run: echo "tshirt-willy.de" > dist/CNAME
-
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
