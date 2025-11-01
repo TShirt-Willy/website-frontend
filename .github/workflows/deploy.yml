@@ -32,12 +32,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          GITHUB_PAGES: true   # falls dein Build darauf reagiert
-
-      # SPA-Fallback (optional)
-      - name: Add 404.html for SPA
-        run: |
-          if [ -f dist/index.html ]; then cp dist/index.html dist/404.html; fi
+          GITHUB_PAGES: true
 
       # CNAME für Custom Domain
       - name: Add CNAME
